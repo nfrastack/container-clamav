@@ -14,7 +14,7 @@ clamd_parse_args
 
 liftoff
 
-print_start "Starting ClamAV ${CLAMAV_VERSION/clamav-/} daemon"
+print_start "Starting ClamAV $(clamd -V -c "${CONFIG_PATH}"/"${CLAMD_CONFIG_FILE}" | awk '{print $2}' | awk -F'/' '{print $1}')"
 ${exec_prefix} exec clamd \
             --config-file "${CONFIG_PATH}"/"${CLAMD_CONFIG_FILE}" \
             --log "${LOG_PATH}"/"${LOG_FILE_CLAMD}" ${debug_arg}

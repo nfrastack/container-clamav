@@ -19,16 +19,14 @@ LABEL \
         org.opencontainers.image.licenses="MIT"
 
 ARG     \
-        CLAMAV_REPO_URL \
-        CLAMAV_VERSION
+        CLAMAV_REPO_URL="https://github.com/Cisco-Talos/clamav" \
+        CLAMAV_VERSIO="clamav-1.4.3"
 
 COPY CHANGELOG.md /usr/src/container/CHANGELOG.md
 COPY LICENSE /usr/src/container/LICENSE
 COPY README.md /usr/src/container/README.md
 
 ENV \
-    CLAMAV_VERSION=${CLAMAV_VERSION:-"clamav-1.4.3"} \
-    CLAMAV_REPO_URL=https://github.com/Cisco-Talos/clamav \
     CONTAINER_ENABLE_SCHEDULING=TRUE \
     IMAGE_NAME="nfrastack/clamav" \
     IMAGE_REPO_URL="https://github.com/nfrastack/container-clamav/"
@@ -69,7 +67,7 @@ RUN echo "" && \
                         && \
     \
     source /container/base/functions/container/build && \
-    container_build_log && \
+    container_build_log image && \
     create_user clamav 3310 clamav 3310 /var/lib/clamav && \
     package update && \
     package upgrade && \
@@ -103,6 +101,7 @@ RUN echo "" && \
     make -j$(nproc) && \
     make install && \
     \
+    container_build_log add "ClamAV" "${CLAMAV_VERSION}" "${CLAMAV_REPO_URL}" && \
     package remove \
                     CLAMAV_BUILD_DEPS \
                     && \
