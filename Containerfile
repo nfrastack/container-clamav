@@ -2,11 +2,10 @@
 #
 # SPDX-License-Identifier: MIT
 
-ARG BASE_IMAGE
-ARG DISTRO
-ARG DISTRO_VARIANT
+ARG \
+    BASE_IMAGE
 
-FROM ${BASE_IMAGE}:${DISTRO}_${DISTRO_VARIANT}
+FROM ${BASE_IMAGE}
 
 LABEL \
         org.opencontainers.image.title="ClamAV" \
@@ -19,8 +18,8 @@ LABEL \
         org.opencontainers.image.licenses="MIT"
 
 ARG     \
-        CLAMAV_REPO_URL="https://github.com/Cisco-Talos/clamav" \
-        CLAMAV_VERSIO="clamav-1.4.3"
+        CLAMAV_VERSION="clamav-1.5.0" \
+        CLAMAV_REPO_URL="https://github.com/Cisco-Talos/clamav"
 
 COPY CHANGELOG.md /usr/src/container/CHANGELOG.md
 COPY LICENSE /usr/src/container/LICENSE

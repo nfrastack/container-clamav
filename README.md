@@ -66,7 +66,7 @@ Example:
 `ghcr.io/nfrastack/container-clamav:alpine`
 
 * `latest` will be the most recent commit
-* An otpional `tag` may exist that matches the [CHANGELOG](CHANGELOG.md) - These are the safest
+* An optional `tag` may exist that matches the [CHANGELOG](CHANGELOG.md) - These are the safest
 * If it is built for multiple distributions there may exist a value of `alpine` or `debian`
 * If there are multiple distribution variations it may include a version - see the registry for availability
 
@@ -119,6 +119,8 @@ Below is the complete list of available options that can be used to customize yo
 | `DATA_PATH`            | Base Folder for Data Files                                             | `/data/`             |          |
 | `DEFINITIONS_PATH`     | Folder for Virus Definitions                                           | `${DATA_PATH}`       |          |
 | `CLAMD_CONFIG_FILE`    | Clamd Configuration file                                               | `clamd.conf`         |          |
+| `CLAM_USER`            | User to execute all commands as                                        | `clamav`             |          |
+| `CLAM_GROUP`           | Group of clam user                                                     | `clamav`             |          |
 | `LOG_TYPE`             | Log to `file`, `console`, `both`, or `none`                            | `FILE`               |          |
 | `LOG_PATH`             | Logfile locations                                                      | `/logs/`             |          |
 | `LOG_DEBUG`            | Enable Debug in Logs                                                   | `FALSE`              |          |
@@ -151,6 +153,15 @@ Below is the complete list of available options that can be used to customize yo
 | `MAX_THREADS`                 | Max Scanning Threads               | `10`    | x        |
 | `MAX_CONNECTION_QUEUE_LENGTH` | Max Connection Queue Length        | `200`   | x        |
 | `MAX_SCAN_TIME`               | Maximum File Scanning Time         | `0`     | x        |
+
+#### Remote Commands Configuration
+
+| Parameter                 | Description                    | Default | Advanced |
+| ------------------------- | ------------------------------ | ------- | -------- |
+| `COMMAND_ENABLE_SHUTDOWN` | Allow sending shutdown command | `TRUE`  | x        |
+| `COMMAND_ENABLE_RELOAD`   | Allow sending reload command   | `TRUE`  | x        |
+| `COMMAND_ENABLE_STATS`    | Allow sending stats command    | `TRUE`  | x        |
+| `COMMAND_ENABLE_VERSION`  | Allow sending version command  | `TRUE`  | x        |
 
 #### Virus Definitions Configuration
 

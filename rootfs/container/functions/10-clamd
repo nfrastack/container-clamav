@@ -26,7 +26,7 @@ clamav_bootstrap_filesystem() {
                     ${CONFIG_PATH},\
                     ${DEFINITIONS_PATH},\
                     ${LOG_PATH}" \
-                    clamav:clamav 755
+                    "${CLAM_USER}":"${CLAM_GROUP}" 755
 
     rm -rf /var/lib/clamav
     ln -sf "${DEFINITIONS_PATH}" /var/lib/clamav
@@ -35,8 +35,8 @@ clamav_bootstrap_filesystem() {
 clamav_configure_logging() {
     case "${LOG_TYPE,,}" in
         file | both)
-            create_logrotate clamav "${LOG_PATH}"/"${LOG_FILE_CLAMD}" clamav clamav clamav
-            create_logrotate clamav "${LOG_PATH}"/"${LOG_FILE_FRESHCLAM}" clamav clamav clamav
+            create_logrotate clamav "${LOG_PATH}"/"${LOG_FILE_CLAMD}" clamav "${CLAM_USER}" "${CLAM_GROUP}"
+            create_logrotate clamav "${LOG_PATH}"/"${LOG_FILE_FRESHCLAM}" clamav "${CLAM_USER}" "${CLAM_GROUP}"
         ;;
     esac
 }
@@ -53,6 +53,10 @@ clamd_generate_configuration() {
     truefalse_yesno ALERT_PARTITION_INTERSECTION
     truefalse_yesno ALERT_PHISHING_CLOAK
     truefalse_yesno ALERT_PHISHING_SSL_MISMATCH
+    truefalse_yesno COMMAND_ENABLE_SHUTDOWN
+    truefalse_yesno COMMAND_ENABLE_RELOAD
+    truefalse_yesno COMMAND_ENABLE_STATS
+    truefalse_yesno COMMAND_ENABLE_VERSION
     truefalse_yesno DISABLE_CERT_CHECK
     truefalse_yesno ENABLE_ALGORITHMIC_DETECTION
     truefalse_yesno ENABLE_BYTECODE
@@ -124,7 +128,7 @@ EOF
 # General
 ###############
 
-User                        clamav
+User                        ${CLAM_USER}
 Foreground                  yes
 PidFile                     $(dirname "${CLAMD_LOCAL_SOCKET}")/clamd.pid
 LocalSocket                 ${CLAMD_LOCAL_SOCKET}
@@ -139,6 +143,15 @@ LogFileUnlock               yes
 LogTime                     yes
 LogVerbose                  ${LOG_VERBOSE}
 ExtendedDetectionInfo       ${LOG_EXTENDED_INFO}
+
+###############
+# Commands
+###############
+
+EnableShutdownCommand ${COMMAND_ENABLE_SHUTDOWN}
+EnableReloadCommand ${COMMAND_ENABLE_RELOAD}
+EnableStatsCommand ${COMMAND_ENABLE_STATS}
+EnableVersionCommand ${COMMAND_ENABLE_VERSION}
 
 ###############
 # Performance
@@ -243,12 +256,12 @@ freshclam_generate_configuration() {
         custom_db=$(echo "${FRESHCLAM_DATABASES}" | tr "," "\n" | sed -e 's/^/DatabaseCustomURL /')
     fi
 
-    cat <<EOF | silent sudo -u clamav tee "${CONFIG_PATH}"/"${FRESHCLAM_CONFIG_FILE}"
+    cat <<EOF | silent sudo -u ${CLAM_USER} "${CONFIG_PATH%/}"/"${FRESHCLAM_CONFIG_FILE}"
 ## Custom Generated ${IMAGE_NAME} Freshclam Configuration! Do not edit, instead set ENV Vars
 ## If you want to use your own configuration files set FRESHCLAM_SETUP_TYPE=MANUAL when starting container
 ## Last Generated on $(date)
 
-DatabaseOwner               clamav
+DatabaseOwner               ${CLAM_USER}
 PidFile                     $(dirname "${CLAMD_LOCAL_SOCKET}")/freshclam.pid
 DatabaseDirectory           ${DEFINITIONS_PATH}
 DatabaseMirror              database.clamav.net

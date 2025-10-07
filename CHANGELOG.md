@@ -1,3 +1,11 @@
+## 3.1.0 2025-10-07 <dave at tiredofit dot ca>
+
+   ### Added
+      - Add CLAM_USER and CLAM_GROUP environment variables
+      - Add support for COMMAND_ENABLE_(SHUTDOWN|STATS|RELOAD|VERSION) variables
+      - ClamAV 1.5.0
+
+
 ## 3.0.0 2025-08-14 <dave at tiredofit dot ca>
 
    ### Added
