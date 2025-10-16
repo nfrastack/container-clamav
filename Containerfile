@@ -18,7 +18,7 @@ LABEL \
         org.opencontainers.image.licenses="MIT"
 
 ARG     \
-        CLAMAV_VERSION="clamav-1.5.0" \
+        CLAMAV_VERSION="clamav-1.5.1" \
         CLAMAV_REPO_URL="https://github.com/Cisco-Talos/clamav"
 
 COPY CHANGELOG.md /usr/src/container/CHANGELOG.md

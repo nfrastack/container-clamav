@@ -1,3 +1,9 @@
+## 3.1.1 2025-10-16 <dave at tiredofit dot ca>
+
+   ### Added
+      - ClamAV 1.5.1
+
+
 ## 3.1.0 2025-10-07 <dave at tiredofit dot ca>
 
    ### Added
