@@ -35,8 +35,8 @@ clamav_bootstrap_filesystem() {
 clamav_configure_logging() {
     case "${LOG_TYPE,,}" in
         file | both)
-            create_logrotate clamav "${LOG_PATH}"/"${LOG_FILE_CLAMD}" clamav "${CLAM_USER}" "${CLAM_GROUP}"
-            create_logrotate clamav "${LOG_PATH}"/"${LOG_FILE_FRESHCLAM}" clamav "${CLAM_USER}" "${CLAM_GROUP}"
+            create_logrotate clamav "${LOG_PATH%/}"/"${LOG_FILE_CLAMD}" clamav "${CLAM_USER}" "${CLAM_GROUP}"
+            create_logrotate clamav "${LOG_PATH%/}"/"${LOG_FILE_FRESHCLAM}" clamav "${CLAM_USER}" "${CLAM_GROUP}"
         ;;
     esac
 }
@@ -119,7 +119,7 @@ EOF
     done
 
     print_notice "Generating Configuration for Clam Antivirus"
-    cat <<EOF | silent sudo -u clamav tee "${CONFIG_PATH}"/"${CLAMD_CONFIG_FILE}"
+    cat <<EOF | silent sudo -u clamav tee "${CONFIG_PATH%/}"/"${CLAMD_CONFIG_FILE}"
 ## Custom Generated ${IAMGE_NAME} Clam Antivirus Configuration! Do not edit, instead set ENV Vars
 ## If you want to use your own configuration files set CLAMAV_SETUP_TYPE=MANUAL when starting container
 ## Last Generated on $(TZ=${TIMEZONE} date +'%Y-%m-%d %H:%M:%S %Z')

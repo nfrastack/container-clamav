@@ -34,14 +34,14 @@ if var_false "${ENABLE_DEFINITIONS_UPDATE}" ; then
 	print_info "Disabling Definitions from being automatically updated"
 	service-stop 20-freshclam
 else
-    if [ ! -f "${DEFINITIONS_PATH}"/main.cvd  ]; then
+    if [ ! -f "${DEFINITIONS_PATH%/}"/main.cvd  ]; then
         print_warn "No Virus Definitions Found! Downloading.."
     	freshclam_parse_args
         silent s6-setuidgid clamav \
                                     freshclam \
                                                 -F \
-                                                --config-file="${CONFIG_PATH}"/"${FRESHCLAM_CONFIG_FILE}" \
-                                                --log="${LOG_PATH}"/"${LOG_FILE_FRESHCLAM}" ${log_verbose} ${debug_arg}
+                                                --config-file="${CONFIG_PATH%/}"/"${FRESHCLAM_CONFIG_FILE}" \
+                                                --log="${LOG_PATH%/}"/"${LOG_FILE_FRESHCLAM}" ${log_verbose} ${debug_arg}
     fi
 fi
 

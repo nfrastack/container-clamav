@@ -39,7 +39,7 @@ fi
 while true; do
     update_start_time=$(date +"%s")
     print_debug "Definition update routines started time: $(date +'%Y-%m-%d %T %Z')"
-    ${exec_prefix} freshclam -F --config-file="${CONFIG_PATH}"/"${FRESHCLAM_CONFIG_FILE}" --daemon-notify "${CONFIG_PATH}"/"${CLAMD_CONFIG_FILE}" --log="${LOG_PATH}"/"${LOG_FILE_FRESHCLAM}" ${log_verbose} ${debug_arg}
+    ${exec_prefix} freshclam -F --config-file="${CONFIG_PATH%/}"/"${FRESHCLAM_CONFIG_FILE}" --daemon-notify "${CONFIG_PATH%/}"/"${CLAMD_CONFIG_FILE}" --log="${LOG_PATH%/}"/"${LOG_FILE_FRESHCLAM}" ${log_verbose} ${debug_arg}
     update_finish_time=$(date +"%s")
     update_total_time=$(echo $((update_finish_time-update_start_time)))
     print_info "Update routines finish time: $(date -d @${update_finish_time} +"%Y-%m-%d %T %Z")"
