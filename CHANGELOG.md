@@ -1,3 +1,9 @@
+## 3.1.2 2025-12-19 <dave at tiredofit dot ca>
+
+   ### Changed
+      - Fix defaults
+
+
 ## 3.1.1 2025-10-16 <dave at tiredofit dot ca>
 
    ### Added

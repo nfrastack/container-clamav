@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
+output_off
 set_env CACHE_SIZE="65536" nfrastack/clamav
 set_env COMMAND_ENABLE_SHUTDOWN="TRUE" nfrastack/clamav
 set_env COMMAND_ENABLE_RELOAD="TRUE" nfrastack/clamav
@@ -36,3 +37,4 @@ set_env TIMEOUT_COMMAND_READ="30" nfrastack/clamav
 set_env TIMEOUT_IDLE="60" nfrastack/clamav
 set_env TIMEOUT_READ="20" nfrastack/clamav
 set_env TIMEOUT_SEND_BUF="500" nfrastack/clamav
+output_on
