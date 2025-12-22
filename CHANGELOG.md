@@ -1,3 +1,9 @@
+## 3.1.4 2025-12-22 <dave at tiredofit dot ca>
+
+   ### Added
+      - Switch to Alpine 3.23
+
+
 ## 3.1.3 2025-12-22 <dave at tiredofit dot ca>
 
    ### Added
