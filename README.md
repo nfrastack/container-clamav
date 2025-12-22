@@ -165,18 +165,19 @@ Below is the complete list of available options that can be used to customize yo
 
 #### Virus Definitions Configuration
 
-| Parameter                      | Description                                                                          | Default         | Advanced |
-| ------------------------------ | ------------------------------------------------------------------------------------ | --------------- | -------- |
-| `ENABLE_DEFINITIONS_UPDATE`    | Enable Automatic Definitions Updating                                                | `TRUE`          |          |
-| `DISABLE_CERT_CHECK`           | Disable PE Cert Checks                                                               | `TRUE`          |          |
-| `LOG_FILE_FRESHCLAM`           | Freshclam Log File                                                                   | `freshclam.log` |          |
-| `DEFINITIONS_UPDATE_FREQUENCY` | How often to check for new Definitions in minutes                                    | `1440`          | x        |
-| `DEFINITIONS_UPDATE_BEGIN`     | What time to do the first dump. Defaults to immediate. Must be in one of two formats |                 |          |
-|                                | Absolute HHMM, e.g. `2330` or `0415`                                                 |                 |          |
-|                                | Relative +MM, i.e. how many minutes after starting the container,                    |                 |          |
-|                                | e.g. `+0` (immediate), `+10` (in 10 minutes), or `+90` in an hour and a half         |                 |          |
-| `FRESHCLAM_DATABASES`          | Comma seperated list of additional definitions eg                                    |                 |          |
-|                                | `http://www.rfxn.com/downloads/rfxn.ndb,http://www.rfxn.com/downloads/rfxn.hdb`      |                 |          |
+| Parameter                      | Description                                                                          | Default               | Advanced |
+| ------------------------------ | ------------------------------------------------------------------------------------ | --------------------- | -------- |
+| `ENABLE_DEFINITIONS_UPDATE`    | Enable Automatic Definitions Updating                                                | `TRUE`                |          |
+| `DISABLE_CERT_CHECK`           | Disable PE Cert Checks                                                               | `TRUE`                |          |
+| `LOG_FILE_FRESHCLAM`           | Freshclam Log File                                                                   | `freshclam.log`       |          |
+| `DEFINITIONS_MIRROR`           | Definitions Mirror to download from                                                  | `database.clamav.net` | x        |
+| `DEFINITIONS_UPDATE_FREQUENCY` | How often to check for new Definitions in minutes                                    | `1440`                | x        |
+| `DEFINITIONS_UPDATE_BEGIN`     | What time to do the first dump. Defaults to immediate. Must be in one of two formats |                       |          |
+|                                | Absolute HHMM, e.g. `2330` or `0415`                                                 |                       |          |
+|                                | Relative +MM, i.e. how many minutes after starting the container,                    |                       |          |
+|                                | e.g. `+0` (immediate), `+10` (in 10 minutes), or `+90` in an hour and a half         |                       |          |
+| `FRESHCLAM_DATABASES`          | Comma seperated list of additional definitions eg                                    |                       |          |
+|                                | `http://www.rfxn.com/downloads/rfxn.ndb,http://www.rfxn.com/downloads/rfxn.hdb`      |                       |          |
 
 #### Virus Scanning Settings
 

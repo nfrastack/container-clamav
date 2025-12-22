@@ -1,3 +1,12 @@
+## 3.1.3 2025-12-22 <dave at tiredofit dot ca>
+
+   ### Added
+      - Add DEFINITIONS_MIRROR environment variable
+
+   ### Changed
+      - Fix issue introduced with 3.1.0 and signature updates
+
+
 ## 3.1.2 2025-12-19 <dave at tiredofit dot ca>
 
    ### Changed

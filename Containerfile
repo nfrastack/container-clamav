@@ -30,6 +30,8 @@ ENV \
     IMAGE_NAME="nfrastack/clamav" \
     IMAGE_REPO_URL="https://github.com/nfrastack/container-clamav/"
 
+EXPOSE 3310
+
 RUN echo "" && \
     CLAMAV_BUILD_DEPS_ALPINE=" \
                                 build-base \
@@ -105,7 +107,5 @@ RUN echo "" && \
                     CLAMAV_BUILD_DEPS \
                     && \
     package cleanup
-
-EXPOSE 3310
 
 COPY rootfs /

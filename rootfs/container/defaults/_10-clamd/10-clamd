@@ -8,6 +8,7 @@ set_env COMMAND_ENABLE_SHUTDOWN="TRUE" nfrastack/clamav
 set_env COMMAND_ENABLE_RELOAD="TRUE" nfrastack/clamav
 set_env COMMAND_ENABLE_STATS="TRUE" nfrastack/clamav
 set_env COMMAND_ENABLE_VERSION="TRUE" nfrastack/clamav
+set_env DEFINITIONS_MIRROR="${DEFINITIONS_MIRROR}" nfrastack/clamav
 set_env DEFINITIONS_UPDATE_FREQUENCY="1440" nfrastack/clamav
 set_env ENABLE_CLAMD="TRUE" nfrastack/clamav
 set_env LISTEN_PORT="3310" nfrastack/clamav
