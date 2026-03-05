@@ -1,3 +1,9 @@
+## 3.1.5 2026-03-04 <code at nfastack dot com>
+
+   ### Added
+      - ClamAV 1.5.2
+
+
 ## 3.1.4 2025-12-22 <dave at tiredofit dot ca>
 
    ### Added

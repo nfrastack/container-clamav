@@ -1,4 +1,1 @@
-./certs*
-./logs*
-./data*
-
+!compose.yml
