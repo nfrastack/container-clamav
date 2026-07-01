@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: © 2025 Nfrastack <code@nfrastack.com>
+# SPDX-FileCopyrightText: © 2026 Nfrastack <code@nfrastack.com>
 #
 # SPDX-License-Identifier: MIT
 
@@ -18,7 +18,7 @@ LABEL \
         org.opencontainers.image.licenses="MIT"
 
 ARG     \
-        CLAMAV_VERSION="clamav-1.5.2" \
+        CLAMAV_VERSION="clamav-1.5.3" \
         CLAMAV_REPO_URL="https://github.com/Cisco-Talos/clamav"
 
 COPY CHANGELOG.md /usr/src/container/CHANGELOG.md

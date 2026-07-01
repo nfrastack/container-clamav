@@ -1,3 +1,10 @@
+## 3.1.6 2026-07-01 <code at nfrastack dot com>
+
+   ### Added
+      - ClamAV 1.5.3
+      - Alpine 3.24 base
+
+
 ## 3.1.5 2026-03-04 <code at nfastack dot com>
 
    ### Added
@@ -7,7 +14,7 @@
 ## 3.1.4 2025-12-22 <dave at tiredofit dot ca>
 
    ### Added
-      - Switch to Alpine 3.23
+      - Switch to Alpine 3.24
 
 
 ## 3.1.3 2025-12-22 <dave at tiredofit dot ca>
