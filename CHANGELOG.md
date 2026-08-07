@@ -1,3 +1,9 @@
+## 3.1.7 2026-08-07 <code at nfrastack dot com>
+
+   ### Added
+      - ClamAV 1.5.4
+
+
 ## 3.1.6 2026-07-01 <code at nfrastack dot com>
 
    ### Added
